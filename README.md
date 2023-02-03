@@ -1,2 +1,4 @@
 # dxonline-hook
 xdu的dxonile平台的自动连播倍速脚本，通过hook解除浏览器网页锁定，16倍速，自动静音连播
+
+主要实现思路是在Dom加载前hook住addEventListener和removeEventListener，为每个DOM对象维护一个监听器List，通过自定义一个getEventListner来获取某个Dom对象上的匿名监听器，并删除之
