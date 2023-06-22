@@ -12,6 +12,8 @@
 
 
 //Hook劫持addEventListener和removeEventListener
+//油猴默认是在DOM加载完毕后加载插件脚本，这时候想Hook拿到监听器的数据已经晚了 
+//需要用@run-at       document-start 指定脚本加载时机
 let oldadd=EventTarget.prototype.addEventListener
 EventTarget.prototype.addEventListener=function (...args){
     var type=args[0];
