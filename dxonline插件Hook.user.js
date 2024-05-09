@@ -79,8 +79,10 @@ function getEventListeners(object,type) {
 }
 function removeAllEventListeners(object,type) {
     var listeners=getEventListeners(object,type);
-    for(var i=0;i<listeners.length;i++){
+    if(listeners){
+     for(var i=0;i<listeners.length;i++){
         object.removeEventListener(type,listeners[i].listener);
+     }
     }
 }
 //解锁逻辑
@@ -109,7 +111,7 @@ function checkAlert(){
     }
     var video=document.getElementById("video");
     if(video.paused==true){
-           video.play();
+           video.play(); //Chorme浏览器在这一行报错，说需要用户先交互一次，则需要点击浏览器网址栏的左侧，把声音选项从“默认”改为“允许”。这里Google加了限制
     }
 //播放完毕，完成页面重定向到下一个视频
     if(document.getElementsByClassName("public_text").length!=0 &&document.getElementsByClassName("public_text")[0].children[1].textContent=="当前视频播放完毕！"){
